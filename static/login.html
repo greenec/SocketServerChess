@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href = "css/bootstrap.min.css" rel = "stylesheet">
+  <link href = "css/login.css" rel = "stylesheet">
+</head>
+<body>
+
+  <div class = "navbar navbar-inverse navbar-static-top">
+    <div class = "container">
+
+      <a href = "http://efight.me/chess" class = "navbar-brand">Chess</a>
+
+      <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+      </button>
+
+      <div class = "collapse navbar-collapse navHeaderCollapse">
+
+        <ul class = "nav navbar-nav navbar-right">
+
+          <li class = "dropdown">
+
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Rankings <b class = "caret"></b></a>
+            <ul class = "dropdown-menu">
+              <li><a href = "#">Overall</a></li>
+              <li><a href = "#">Division</a></li>
+              <li><a href = "#">Player</a></li>
+            </ul>
+
+          </li>
+          <li><a href = "#">Schedule</a></li>
+          <li class = "active"><a href = "login.html">Login</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class = "container">
+
+    <form class="form-signin" action="advisor.html">
+      <h2>Teachers</h2>
+      <input type="text" class="form-control username" placeholder="username" required autofocus>
+      <input type="password" class="form-control password" placeholder="password" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+    <form class="form-signin" action="http://45.55.40.23/play" method = "get">
+      <h2>Players</h2>
+      <input type="text" class="form-control match-code" placeholder="match code" name="gameid" required>
+      <button class="btn btn-lg btn-success btn-block" type="submit">Play</button>
+    </form>
+
+  </div>
+
+  <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src = "js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Team Lineup</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 6px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  </style>
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+</head>
+<body>
+
+  <ul id="sortable">
+    <li class="ui-state-default">John Smith</li>
+    <li class="ui-state-default">Bob Brown</li>
+    <li class="ui-state-default">Jake Michael</li>
+    <li class="ui-state-default">Norman Jones</li>
+    <li class="ui-state-default">Marcus Wild</li>
+    <li class="ui-state-default">Steven Dean</li>
+    <li class="ui-state-default">William Gregory</li>
+  </ul>
+
+</body>
+</html>
