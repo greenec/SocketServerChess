@@ -14,9 +14,16 @@ var express = require('express');
       socket.join(room);
       console.log('user joined room: ' + room);
     });
-    socket.on('move', function(move, room) { //move object emitter
+    socket.on('move', function(move, match_code, fen) { //move object emitter
       console.log('user moved: ' + JSON.stringify(move));
-      io.to(room).emit('move', move);
+      var game = { white: "abc123", black: "xyz123" };
+      var turn = fen.charAt(fen.indexOf(" ") + 1);
+      if (game.white === match_code && turn === "b") {
+        io.to(game.black).emit('move', move);
+      }
+      else if (game.black === match_code && turn === "w") {
+        io.to(game.white).emit('move', move);
+      }
     });
   });
 

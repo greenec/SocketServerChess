@@ -32,7 +32,7 @@ $(document).ready(function() {
     if (move === null) {
       return 'snapback';
     }
-    socket.emit('move', moveObj, getParameterByName('gameid'));
+    socket.emit('move', moveObj, getParameterByName('gameid'), game.fen());
     updateStatus();
   };
 
