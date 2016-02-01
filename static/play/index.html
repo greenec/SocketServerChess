@@ -1,5 +1,7 @@
 <html>
 <head>
+  <link href = "/css/bootstrap.min.css" rel = "stylesheet">
+
   <!-- libs-->
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/libs/jquery-1.11.3.min.js"></script>
@@ -11,8 +13,61 @@
   <script src="js/chessgame.js"></script>
 </head>
 <body>
-  <div id="board" style="width: 400px"></div>
+
+  <div class = "navbar navbar-inverse navbar-static-top">
+    <div class = "container">
+
+      <a href = "http://efight.me/chess" class = "navbar-brand">Chess</a>
+
+      <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+      </button>
+
+      <div class = "collapse navbar-collapse navHeaderCollapse">
+
+        <ul class = "nav navbar-nav navbar-right">
+
+          <li class = "dropdown">
+
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Rankings <b class = "caret"></b></a>
+            <ul class = "dropdown-menu">
+              <li><a href = "#">Overall</a></li>
+              <li><a href = "#">Division</a></li>
+              <li><a href = "#">Player</a></li>
+            </ul>
+
+          </li>
+          <li><a href = "#">Schedule</a></li>
+          <li><a href = "login.html">Login</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+  <div id="boardcontainer" style="width: 400px">
+    <div id="loading" style="position:absolute">
+      <button type="button" class="btn btn-warning" style="top:40px;left:10px;position:relative;z-index:1000;"><span id="loadstatus">Loading..</span></button>
+    </div>
+    <div id="board" style="width: 400px">
+    </div>
+  </div>
   <p>Status: <span id="status"></span></p>
   <p>FEN: <span id="fen"></span></p>
+  <table>
+    <tr><td>White Time:</td><td id="whiteTime"></td></tr>
+    <tr><td>BlacK Time:</td><td id="blackTime"></td></tr>
+  </table>
+  </div>
+
+
+  <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src = "/js/bootstrap.min.js"></script>
+
 </body>
 </html>

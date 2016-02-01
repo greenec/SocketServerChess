@@ -1,31 +1,56 @@
 <html>
 <head>
   <title>Team Lineup</title>
+
+  <!-- Sortable List -->
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+
   <style>
-  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-  #sortable li { margin: 0 3px 6px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 6px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
   </style>
+
   <script>
-  $(function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
-  });
+    $(function() {
+      $( "#sortable" ).sortable();
+      $( "#sortable" ).disableSelection();
+    });
+    var socket = io();
+
+    function submitLineup() {
+      var lineup = $( "#sortable" ).sortable( "toArray" );
+      socket.emit('lineup', lineup);
+      document.write("Lineup: " + lineup);
+    }
   </script>
+
 </head>
 <body>
 
   <ul id="sortable">
-    <li class="ui-state-default">John Smith</li>
-    <li class="ui-state-default">Bob Brown</li>
-    <li class="ui-state-default">Jake Michael</li>
-    <li class="ui-state-default">Norman Jones</li>
-    <li class="ui-state-default">Marcus Wild</li>
-    <li class="ui-state-default">Steven Dean</li>
-    <li class="ui-state-default">William Gregory</li>
+    <li class="ui-state-default" id="smith">John Smith</li>
+    <li class="ui-state-default" id="brown">Bob Brown</li>
+    <li class="ui-state-default" id="micheal">Jake Michael</li>
+    <li class="ui-state-default" id="jones">Norman Jones</li>
+    <li class="ui-state-default" id="wild">Marcus Wild</li>
+    <li class="ui-state-default" id="dean">Steven Dean</li>
+    <li class="ui-state-default" id="gregory">William Gregory</li>
   </ul>
+
+  <button onclick="submitLineup();">Update Lineup</button>
+
+  <p>Note: This page should access the database to get the roster, then create a list item with a player id and name for each player.<br><br>Example -</p>
+  <code>
+    &ltul&gt <br>
+    for (player in roster) { <br>
+      &ltli id="playerid"&gtplayername&lt/li&gt <br>
+    } <br>
+    &lt/ul&gt
+  </code>
 
 </body>
 </html>

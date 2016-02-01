@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "description": "a web socket-based chess app",
   "dependencies": {
+    "chess.js": "^0.9.3",
     "express": "^4.13.3",
-    "socket.io": "^1.3.7"
+    "mysql": "^2.5.4",
+    "sha1": "^1.1.1",
+    "socket.io": "^1.3.7",
+    "squel": "^4.2.2"
   }
 }
