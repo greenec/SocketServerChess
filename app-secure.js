@@ -1,11 +1,29 @@
 // mysql root pass: catalyst7!
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var socketIO = require('socket.io');
+var LEX = require('letsencrypt-express');
+var https = require('https');
 var mysql = require('mysql');
 var sql = require('squel');
 var Chess = require('chess.js').Chess;
+
+var lex = LEX.create({
+  configDir: '/etc/letsencrypt',
+  letsencrypt: null,
+  approveRegistration: function (hostname, cb) {
+    cb(null, {
+      domains: ['chessmatch.us', 'www.chessmatch.us'],
+      email: 'connor.greene2000@gmail.com',
+      agreeTos: true
+    });
+  }
+});
+
+var server = https.createServer(lex.httpsOptions, LEX.createAcmeResponder(lex, app));
+server.listen(443);
+
+var io = socketIO.listen(server);
 
 function getRoomKey (white_key, black_key) {
   var sha1 = require('sha1');
@@ -293,8 +311,4 @@ io.on('connection', function(socket) { //join room on connect
     console.log(gameid + " is still connected.");
   });
 
-});
-
-var server = http.listen(80, function() {
-  console.log("listening on port 80");
 });

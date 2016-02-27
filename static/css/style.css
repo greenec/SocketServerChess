@@ -1,0 +1,18 @@
+#main-container {
+  padding-top: 25px;
+  padding-left: 25px;
+}
+#board-container {
+  width: 400px;
+  padding-bottom: 25px;
+}
+#loading {
+  position: absolute;
+}
+#status-button{
+  position: relative !important;
+  z-index: 1000 !important;
+}
+#board {
+  width: 400px;
+}

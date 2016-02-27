@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var socket = io();                                  //initiated socket client
+  var socket = io();
   socket.emit('join', getParameterByName('gameid'));  //join room as defined by query parameter in URL bar
 
   var board,
@@ -7,8 +7,8 @@ $(document).ready(function() {
   statusEl = $('#status'),
   fenEl = $('#fen'),
   pgnEl = $('#pgn');
-  loadStatus = $('#loadstatus');
-
+  loadStatus = $('#load-status');
+  
   var isWhite = true;
   var loaded = false, started = false, waiting = false;
   var localWhiteTime = 1800, localBlackTime = 1800;
