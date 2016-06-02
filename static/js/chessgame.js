@@ -8,7 +8,7 @@ $(document).ready(function() {
   fenEl = $('#fen'),
   pgnEl = $('#pgn');
   loadStatus = $('#load-status');
-  
+
   var isWhite = true;
   var loaded = false, started = false, waiting = false;
   var localWhiteTime = 1800, localBlackTime = 1800;
@@ -162,14 +162,12 @@ $(document).ready(function() {
     updateTime(serverWhiteTime, serverBlackTime);
   });
 
-
   function updateTime(whiteTime, blackTime) {
 
     startTime = new Date().getTime();
 
     localWhiteTime = whiteTime;
     localBlackTime = blackTime;
-
 
     function formatTime(t) {
       var minutes, seconds;
@@ -202,6 +200,17 @@ $(document).ready(function() {
     }
     updateTime(localWhiteTime, localBlackTime);
   }, 1000);
+
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val(), getParameterByName('gameid'));
+    $('#m').val('');
+    return false;
+  });
+
+  socket.on('chat message', function(msg, gameid){
+    $('#messages').prepend($('<li>').text(gameid + ': ' + msg));
+  });
+
 
   updateStatus();
 });

@@ -311,4 +311,15 @@ io.on('connection', function(socket) { //join room on connect
     console.log(gameid + " is still connected.");
   });
 
+  socket.on('chat message', function(msg, match_code) {
+    var query = sql.select().from("games").where("black_key = ? OR white_key = ?", match_code, match_code).toString();
+
+    connection.query(query, function(err, rows, fields) {
+      if (!err && rows && rows.length > 0) {
+        var roomkey = getRoomKey(rows[0].white_key, rows[0].black_key);
+        io.to(roomkey).emit('chat message', msg, match_code);
+      }
+    });
+  });
+
 });

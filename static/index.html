@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="js/libs/chessboard/css/chessboard-0.3.0.min.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/chat.css" />
 
   <!-- libs-->
   <script src="/socket.io/socket.io.js"></script>
@@ -34,6 +35,15 @@
       <tr><td>White Time:</td><td id="whiteTime"></td></tr>
       <tr><td>Black Time:</td><td id="blackTime"></td></tr>
     </table>
+    
+    <div id="chat-container">
+      <div id="chat">
+        <ul id="messages"></ul>
+      </div>
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
   </div>
 
 </body>
